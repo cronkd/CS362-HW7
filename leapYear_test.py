@@ -13,6 +13,16 @@ class TestCase(unittest.TestCase):
 		output = sys.stdout.getvalue().strip()
 		#compares stdout with that it's supposed to be
 		self.assertEqual(output,'2020 is a leap year!')
+	def test2(self):
+		#calls print function of program
+		leapYear.leap(2017)
+		#check if using buffer
+		if not hasattr(sys.stdout,"getvalue"):
+			self.fail("need to run in buffered mode")
+		#save stdout as ouput
+		output = sys.stdout.getvalue().strip()
+		#compares stdout with that it's supposed to be
+		self.assertEqual(output,'2017 is not a leap year!')
 if __name__ == '__main__':
 	assert not hasattr(sys.stdout,"getvalue")
 	unittest.main(module=__name__, buffer = True,exit=False)
